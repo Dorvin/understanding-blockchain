@@ -17,7 +17,7 @@ async function main() {
         // Create a new file system based wallet for managing identities.
         const walletPath = path.join(process.cwd(), 'wallet');
         const wallet = await Wallets.newFileSystemWallet(walletPath);
-        console.log(`Wallet path: ${walletPath}`);
+        // console.log(`Wallet path: ${walletPath}`);
 
         // Check to see if we've already enrolled the user.
         const identity = await wallet.get('appUser');
@@ -39,7 +39,7 @@ async function main() {
 
         // Submit the specified transaction.
         const result = await contract.submitTransaction('updateCounter', process.argv[2]);
-        console.log('Transaction has been submitted');
+        // console.log('Transaction has been submitted');
         console.log(result);
 
         // Disconnect from the gateway.
