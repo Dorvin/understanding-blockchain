@@ -25,7 +25,7 @@ class Counter extends Contract {
         await ctx.stub.putState(name, Buffer.from(JSON.stringify(counter)));
     }
 
-    async readCounter(ctx, namew) {
+    async readCounter(ctx, name) {
         const counterAsBytes = await ctx.stub.getState(name); // get the counter from chaincode state
         if (!counterAsBytes || counterAsBytes.length === 0) {
             throw new Error(`${name} does not exist`);

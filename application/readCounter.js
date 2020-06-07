@@ -38,8 +38,9 @@ async function main() {
         const contract = network.getContract('counter');
 
         // Submit the specified transaction.
-        await contract.submitTransaction('readCounter', process.argv[2]);
+        const result = await contract.submitTransaction('readCounter', process.argv[2]);
         // console.log('Transaction has been submitted');
+        console.log(`name: ${result.name}, value: ${result.value}`);
 
         // Disconnect from the gateway.
         await gateway.disconnect();
