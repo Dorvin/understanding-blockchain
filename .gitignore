@@ -1,7 +1,2 @@
-test-network/*
-bin/*
-config/*
-scripts/*
 application/node_modules/*
-application/wallet/*
 chaincode/node_modules/*
