@@ -8,7 +8,7 @@ class Counter extends Contract {
         const counter = {
             "name": name,
             "type": type,
-            "number": Number(number),
+            "value": Number(number),
         };
 
         await ctx.stub.putState(name, Buffer.from(JSON.stringify(counter)));
@@ -20,7 +20,7 @@ class Counter extends Contract {
             throw new Error(`${name} does not exist`);
         }
         const counter = JSON.parse(counterAsBytes.toString());
-        counter.number = counter.number + (counter.type == "up" ? 1 : -1);
+        counter.value = counter.value + (counter.type == "up" ? 1 : -1);
 
         await ctx.stub.putState(name, Buffer.from(JSON.stringify(counter)));
     }
@@ -31,7 +31,11 @@ class Counter extends Contract {
             throw new Error(`${name} does not exist`);
         }
         const counter = JSON.parse(counterAsBytes.toString());
-        return counter;
+        const ret = {
+            "name": counter.name,
+            "value": counter.value,
+        }
+        return ret;
     }
 }
 
